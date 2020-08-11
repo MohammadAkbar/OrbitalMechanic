@@ -1,4 +1,4 @@
-def get_TLEs(NORADid=26073,
+def get_TLEs(NORADid,
             spacetrack_user,
             spacetrack_pass,
             epoch="2010-01-01--2011-01-01",
