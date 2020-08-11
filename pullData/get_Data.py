@@ -35,7 +35,7 @@ def get_batch_TLEs(NORADid,
 #Get Current MEO objects
 def get_MEO_ids():
     import pandas as pd
-    df = pd.read_csv('../Data/inOrbit.csv')
+    df = pd.read_csv('./Data/inOrbit.csv')
     #df = df[df['OBJECT_NAME'].str.contains("DEB")]
     df = df[(df['APOGEE'] > 2000)&(df['APOGEE']<36000)]
     return list(np.unique(df["NORAD_CAT_ID"]))
@@ -43,7 +43,7 @@ def get_MEO_ids():
 #Get Current LEO objects
 def get_LEO_ids():
     import pandas as pd
-    df = pd.read_csv('../Data/inOrbit.csv')
+    df = pd.read_csv('./Data/inOrbit.csv')
     #df = df[df['OBJECT_NAME'].str.contains("DEB")]
     df = df[(df['APOGEE'] > 125)&(df['APOGEE']<2000)]
     return list(np.unique(df["NORAD_CAT_ID"]))
@@ -51,7 +51,7 @@ def get_LEO_ids():
 #Get Current GEO objects
 def get_GEO_ids():
     import pandas as pd
-    df = pd.read_csv('../Data/inOrbit.csv')
+    df = pd.read_csv('./Data/inOrbit.csv')
     #df = df[df['OBJECT_NAME'].str.contains("DEB")]
     df = df[(df['APOGEE'] > 36000)]
     return list(np.unique(df["NORAD_CAT_ID"]))
