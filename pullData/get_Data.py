@@ -44,6 +44,7 @@ def get_batch_TLEs(NORADid,
     import numpy as np
     import pandas as pd
     from io import StringIO
+    from tqdm.notebook import tqdm as tqdm
 
     def mycallback(until):
         duration = int(round(until - time.time()))
@@ -55,7 +56,7 @@ def get_batch_TLEs(NORADid,
     tles = st.tle( norad_cat_id=NORADid , epoch=epoch , format='csv' )
     if tles:
       t = pd.read_csv(StringIO(tles))
-      for id in NORADid:
+      for id in tqdm(NORADid):
         ids = t[(t['NORAD_CAT_ID'] == id)]
         TLE_ids[id] = ids[['NORAD_CAT_ID','TLE_LINE1','TLE_LINE2']]
     return TLE_ids
