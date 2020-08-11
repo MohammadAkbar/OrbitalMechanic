@@ -1,3 +1,4 @@
+# generate TLE pairs for object(NORADid)
 def get_batch_TLEs(NORADid,
             spacetrack_user,
             spacetrack_pass,
@@ -30,3 +31,24 @@ def get_batch_TLEs(NORADid,
         )
     )
     return Ts
+
+#Get Current MEO objects
+def get_MEO_ids():
+    df = pd.read_csv('../Data/inOrbit.csv')
+    #df = df[df['OBJECT_NAME'].str.contains("DEB")]
+    df = df[(df['APOGEE'] > 2000)&(df['APOGEE']<36000)]
+    return list(np.unique(df["NORAD_CAT_ID"]))
+
+#Get Current LEO objects
+def get_LEO_ids():
+    df = pd.read_csv('../Data/inOrbit.csv')
+    #df = df[df['OBJECT_NAME'].str.contains("DEB")]
+    df = df[(df['APOGEE'] > 125)&(df['APOGEE']<2000)]
+    return list(np.unique(df["NORAD_CAT_ID"]))
+
+#Get Current GEO objects
+def get_GEO_ids():
+    df = pd.read_csv('../Data/inOrbit.csv')
+    #df = df[df['OBJECT_NAME'].str.contains("DEB")]
+    df = df[(df['APOGEE'] > 36000)]
+    return list(np.unique(df["NORAD_CAT_ID"]))
