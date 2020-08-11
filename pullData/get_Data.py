@@ -34,8 +34,10 @@ def get_batch_TLEs(NORADid,
 
 #Get Current MEO objects
 def get_MEO_ids():
+    import os
+    cwd = os.getcwd()
     import pandas as pd
-    df = pd.read_csv('./Data/inOrbit.csv')
+    df = pd.read_csv('OrbitalMechanic/Data/inOrbit.csv')
     #df = df[df['OBJECT_NAME'].str.contains("DEB")]
     df = df[(df['APOGEE'] > 2000)&(df['APOGEE']<36000)]
     return list(np.unique(df["NORAD_CAT_ID"]))
