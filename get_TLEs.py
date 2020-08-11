@@ -1,9 +1,9 @@
-def get_TLEs(     NORADid=26073,
-                    spacetrack_user,
-                    spacetrack_pass,
-                    epoch="2010-01-01--2011-01-01",
-                    stepsize=1
-    ):
+def get_TLEs(NORADid=26073,
+            spacetrack_user,
+            spacetrack_pass,
+            epoch="2010-01-01--2011-01-01",
+            stepsize=1
+            ):
 
     import spacetrack.operators as op
     from spacetrack import SpaceTrackClient
