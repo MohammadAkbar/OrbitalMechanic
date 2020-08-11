@@ -18,6 +18,7 @@ def get_batch_TLEs(NORADid,
     st.callback = mycallback
 
     tles = st.tle( norad_cat_id=NORADid , epoch=epoch , format='csv' )
+    T=0
     if tles:
         T = pd.read_csv( StringIO(tles) )
     T.sort_values( by=['EPOCH'] )
