@@ -13,7 +13,7 @@ def genPairs(T,stepsize=1):
 
 def gen_all_pairs(TLE_pairs_ids):
   all_pairs = {}
-  for key, satellite_object in TLE_ids_LEO.items():
+  for key, satellite_object in TLE_pairs_ids.items():
     pairs = genPairs(satellite_object)
     all_pairs[key] = pairs
   return all_pairs
