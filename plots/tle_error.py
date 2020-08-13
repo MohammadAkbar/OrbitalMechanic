@@ -1,4 +1,4 @@
-def plot_offsets(Offsets,thescale=100):
+def plot_offsets(Offsets,thescale=100,NORAD_ID=-1):
   # import plotly graphing library
   import plotly.express as px
   import plotly.graph_objects as go
@@ -6,35 +6,33 @@ def plot_offsets(Offsets,thescale=100):
 
   import pandas as pd
 
-  # put numpy matrix into pandas dataframe
-  df = pd.DataFrame(Offsets[0], columns=["x","y","z"])
-
+  #print(Offsets.T)
   # make plot
   fig = go.Figure(
   )
-  colorTable = ['red', 'lime', 'blue', 'yellow', 'green','pink','brown']
-  for i,o in enumerate(Offsets[:3]):
-    # put numpy matrix into pandas dataframe
-    df = pd.DataFrame(o, columns=["x","y","z"])
 
-    # make plot
-    fig.add_trace(
+  # put numpy matrix into pandas dataframe
+  df = pd.DataFrame(o, columns=["x","y","z"])
+  #prettyPrint(df)
 
-        go.Scatter3d(
-          name="NORAD ID : "+str([29746, 16396, 25258 ][i]),
-          x=df["x"], y=df["y"], z=df["z"],
-          mode = "markers",
-          marker=dict(
-              #size=dfsub["s"],
-              color = colorTable[i],
-              size=1.5,
-              opacity=1,
-              line=dict(
-                  width=0
-              )
-          )
+  # make plot
+  fig.add_trace(
+
+      go.Scatter3d(
+        name="NORAD ID : "+str(NORAD_ID),
+        x=df["x"], y=df["y"], z=df["z"],
+        mode = "markers",
+        marker=dict(
+            #size=dfsub["s"],
+            color = 'red',
+            size=1.5,
+            opacity=1,
+            line=dict(
+                width=0
+            )
         )
-    )
+      )
+  )
   # add x axis
 
   fig.add_trace(
