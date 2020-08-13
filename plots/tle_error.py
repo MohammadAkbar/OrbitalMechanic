@@ -12,7 +12,7 @@ def plot_offsets(Offsets,thescale=100,NORAD_ID=-1):
   )
 
   # put numpy matrix into pandas dataframe
-  df = pd.DataFrame(o, columns=["x","y","z"])
+  df = pd.DataFrame(Offsets, columns=["x","y","z"])
   #prettyPrint(df)
 
   # make plot
